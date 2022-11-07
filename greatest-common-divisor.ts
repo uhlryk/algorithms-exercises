@@ -1,4 +1,11 @@
-export function gcd(a: number, b: number): number {
+export function gcdRecursion(a: number, b: number): number {
+    if (!Number.isInteger(a) || !Number.isInteger(b)) {
+        throw new Error ('Not a integer');
+    }
+    if(a < 1 || b < 1) {
+        throw new Error('Not greater than 0');
+    }
+
     [a, b] = a > b ? [a, b] : [b , a];
 
     a = a % b;
@@ -6,5 +13,5 @@ export function gcd(a: number, b: number): number {
     if (!a) {
         return b;
     }
-    return gcd(a, b);
+    return gcdRecursion(a, b);
 }
