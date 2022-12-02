@@ -1,6 +1,6 @@
 import 'jest';
 
-import { factorialRecursion, factorialIteration } from './factorial';
+import { factorialRecursion, factorialIteration, factorialTailCallRecursion } from './factorial';
 
 describe('factorial', () => {
     describe('recursion', () => {
@@ -18,6 +18,23 @@ describe('factorial', () => {
         })
         it('should throw error for non integer', () => {
             expect(() => factorialRecursion(0.1)).toThrow('Not an integer');
+        })
+    })
+    describe('recursion with tail call optimization', () => {
+        it('should return 6 for 3!', () => {
+            expect(factorialTailCallRecursion(3)).toBe(6);
+        });
+        it('should return 24 for 4!', () => {
+            expect(factorialTailCallRecursion(4)).toBe(24);
+        })
+        it('should return 120 for 5!', () => {
+            expect(factorialTailCallRecursion(5)).toBe(120);
+        })
+        it('should return 1 for 1!', () => {
+            expect(factorialTailCallRecursion(1)).toBe(1);
+        })
+        it('should throw error for non integer', () => {
+            expect(() => factorialTailCallRecursion(0.1)).toThrow('Not an integer');
         })
     })
     describe('iteration', () => {
