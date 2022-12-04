@@ -14,3 +14,17 @@ export function memoizedFibonacciRecursion(n: number, memo: { [n: number]: numbe
 
     return memo[n];
 }
+
+export function fibonacciIteration(n: number): number {
+    if (n < 2) {
+        return n;
+    }
+
+    let prevPrev = 0;
+    let prev = 1;
+    for (let i = 2; i <= n; i ++) {
+        [prevPrev, prev] = [prev, prev + prevPrev];
+    }
+
+    return prev;
+}
